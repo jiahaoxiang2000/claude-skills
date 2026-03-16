@@ -2,18 +2,21 @@
 
 A shared skills repository for installing focused skills into other projects.
 
+## Project Structure
+
+| Skill                  | Purpose                       | Install                                                                         |
+| ---------------------- | ----------------------------- | ------------------------------------------------------------------------------- |
+| `creating-figures`     | Scientific figures with TikZ  | `npx skills add https://github.com/isomoes/skills --skill creating-figures`     |
+| `find-skills`          | Discover useful skills        | `npx skills add https://github.com/isomoes/skills --skill find-skills`          |
+| `ieee-journal-writing` | IEEE journal writing support  | `npx skills add https://github.com/isomoes/skills --skill ieee-journal-writing` |
+| `pdf`                  | PDF extraction and form tools | `npx skills add https://github.com/isomoes/skills --skill pdf`                  |
+
 ## How To Use
 
 From another project, install one skill by name:
 
 ```bash
 npx skills add https://github.com/isomoes/skills --skill creating-figures
-```
-
-If the repo is published to the skills directory and supports the short form, you can also install from the repo slug:
-
-```bash
-npx skills add isomoes/skills
 ```
 
 For general repo installs, a practical layout looks like this:
@@ -24,13 +27,22 @@ repo-B/                    # another application project
 skills/                    # central shared skills repo
 ```
 
-Then in each project:
+Then in each project, install the specific skill you want:
 
 ```bash
 cd repo-A
 npx skills add https://github.com/isomoes/skills --skill creating-figures
 
 cd ../repo-B
+npx skills add https://github.com/isomoes/skills --skill pdf
+```
+
+Install any specific skill with the same pattern:
+
+```bash
+npx skills add https://github.com/isomoes/skills --skill creating-figures
+npx skills add https://github.com/isomoes/skills --skill find-skills
+npx skills add https://github.com/isomoes/skills --skill ieee-journal-writing
 npx skills add https://github.com/isomoes/skills --skill pdf
 ```
 
@@ -41,27 +53,6 @@ This gives you:
 - no need to copy all skills everywhere
 
 If you are also using OpenAI Codex, its docs say Codex supports installed skills and symlinked skill folders when scanning skill locations. That can be useful for local shared development instead of repeated installs.
-
-A solid team convention is:
-
-```text
-skills/
-├── skills/
-│   ├── creating-figures/
-│   │   └── SKILL.md
-│   ├── find-skills/
-│   │   └── SKILL.md
-│   └── pdf/
-│       └── SKILL.md
-```
-
-Each skill folder name should match the CLI name passed after `--skill`.
-
-## Project Structure
-
-- `skills/creating-figures/` - Create publication-quality scientific figures with TikZ
-- `skills/find-skills/` - Discover and install useful skills
-- `skills/pdf/` - Work with PDF extraction, forms, splitting, and merging
 
 ## License
 
