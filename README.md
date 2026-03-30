@@ -9,6 +9,7 @@ A shared skills repository for installing focused skills into other projects.
 | `creating-figures`     | Scientific figures with TikZ  | `npx skills add https://github.com/isomoes/skills --skill creating-figures`     |
 | `find-skills`          | Discover useful skills        | `npx skills add https://github.com/isomoes/skills --skill find-skills`          |
 | `ieee-journal-writing` | IEEE journal writing support  | `npx skills add https://github.com/isomoes/skills --skill ieee-journal-writing` |
+| `isomoes-writing`      | Weekly reports and tech blogs | `npx skills add https://github.com/isomoes/skills --skill isomoes-writing`      |
 | `pdf`                  | PDF extraction and form tools | `npx skills add https://github.com/isomoes/skills --skill pdf`                  |
 
 ## How To Use
@@ -43,6 +44,7 @@ Install any specific skill with the same pattern:
 npx skills add https://github.com/isomoes/skills --skill creating-figures
 npx skills add https://github.com/isomoes/skills --skill find-skills
 npx skills add https://github.com/isomoes/skills --skill ieee-journal-writing
+npx skills add https://github.com/isomoes/skills --skill isomoes-writing
 npx skills add https://github.com/isomoes/skills --skill pdf
 ```
 
