@@ -157,6 +157,9 @@ When color distinction needed (future extension):
 
 Before finalizing a figure:
 
+- [ ] Standalone TikZ source compiles without errors
+- [ ] Temporary PNG/JPG preview was rendered from the compiled figure
+- [ ] Preview was visually inspected and any issues were fixed
 - [ ] All text readable at intended print size
 - [ ] Consistent spacing throughout
 - [ ] No orphaned or misaligned elements

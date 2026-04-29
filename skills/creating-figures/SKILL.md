@@ -1,6 +1,6 @@
 ---
 name: creating-figures
-description: Creates publication-quality scientific figures for academic papers using TikZ. Use when creating block diagrams, system architectures, flowcharts, or technical illustrations for papers and theses.
+description: Creates publication-quality scientific figures for academic papers using TikZ. Use when creating block diagrams, system architectures, flowcharts, or technical illustrations for papers and theses. Always render a temporary PNG/JPG preview and self-verify visual quality before finalizing figure files.
 ---
 
 # Creating Scientific Figures
@@ -111,7 +111,41 @@ Copy these styles to your preamble:
 4. **Draw connections**: Add arrows with appropriate routing
 5. **Add labels**: Annotate edges and groups
 6. **Refine spacing**: Adjust for visual balance
-7. **Test print**: Verify grayscale readability
+7. **Render preview**: Compile the standalone figure and create a temporary PNG or JPG preview
+8. **Self-verify**: Inspect the preview for visual quality and fix issues before finalizing
+9. **Test print**: Verify grayscale readability
+
+## Required Self-Verification
+
+Every figure creation task must include a local render-and-check loop before final delivery. The source may compile successfully while still having unreadable labels, overlapping arrows, awkward whitespace, or misaligned groups; the raster preview catches these problems before the user sees them.
+
+1. Save the figure as standalone TikZ source (`.tex`).
+2. Compile it to PDF with `latexmk -pdf` or `pdflatex` from the figure directory.
+3. Convert the PDF to a temporary PNG or JPG preview using an available tool such as `pdftoppm`, ImageMagick `magick`, or `convert`.
+4. Open/read the temporary preview image and inspect it visually.
+5. Fix any quality problems, then rerender and reinspect until the preview is acceptable.
+6. Keep the final `.tex` and requested deliverables; remove or clearly mark temporary preview files unless the user asks to keep them.
+
+Use a temporary preview filename such as `figure-name.preview.png` or place previews under a temporary directory. Do not treat successful LaTeX compilation as sufficient verification.
+
+Self-check the preview for:
+
+- text legibility at paper scale and at 50% zoom
+- no overlapping text, labels, arrows, nodes, or group boxes
+- arrowheads and line routes point in the intended direction
+- consistent node sizes, spacing, alignment, and margins
+- enough padding between container labels and inner blocks
+- compact layout without excessive whitespace or clipped content
+- grayscale contrast that remains readable in print
+
+Example verification commands:
+
+```bash
+latexmk -pdf system-diagram.tex
+pdftoppm -png -singlefile -r 200 system-diagram.pdf system-diagram.preview
+```
+
+If `latexmk` is unavailable, use `pdflatex`. If `pdftoppm` is unavailable, use ImageMagick or another installed PDF-to-image converter.
 
 ## File Organization
 

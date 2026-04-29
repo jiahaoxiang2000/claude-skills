@@ -345,6 +345,17 @@ For separate PDF figures:
 \end{document}
 ```
 
+### Preview Rendering and QA
+
+After compilation, always render a temporary PNG or JPG preview and inspect it before finalizing. Compilation only proves the source is syntactically valid; the preview confirms the figure is visually usable.
+
+```bash
+latexmk -pdf system-diagram.tex
+pdftoppm -png -singlefile -r 200 system-diagram.pdf system-diagram.preview
+```
+
+If `latexmk` is unavailable, run `pdflatex system-diagram.tex`. If `pdftoppm` is unavailable, use ImageMagick `magick`/`convert` or another installed converter. Rework the TikZ source and rerender if the preview shows overlap, cramped labels, misaligned nodes, excessive whitespace, clipped content, or weak grayscale contrast.
+
 ### Integration in Document
 
 ```latex
